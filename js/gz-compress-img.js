@@ -4,16 +4,12 @@ function compressPic(o) {
         _img = new Image(),
         _w = 300,
         _ratio = 0.7,
-        _fieldname = 'image'
 
     if (o.hasOwnProperty('width')) {
         _w = o.width
     }
     if (o.hasOwnProperty('ratio')) {
         _ratio = o.ratio
-    }
-    if (o.hasOwnProperty('type')) {
-        _fieldname = o.filedname
     }
 
     _img.onload = function () {
