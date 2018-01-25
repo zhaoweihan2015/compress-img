@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="upload" type="file">
+    <script src="./jquery-1.9.1.min.js"></script>
+    <script src='./js/gz-compress-img.js'></script>
+    <script>
+        $('#upload').on('change', function () {
+            compressPic({
+                file: this.files[0],
+                type: 'png',
+                getBlob: function (file) {
+                    var fd = new FormData()
+                    fd.append('image', file)
+                    $.ajax({
+                        url: 'http://localhost/api/fileTest.php',
+                        data: fd,
+                        type: 'post',
+                        contentType: false,
+                        processData: false,
+                        success: function (d) {
+                            console.log(d)
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
